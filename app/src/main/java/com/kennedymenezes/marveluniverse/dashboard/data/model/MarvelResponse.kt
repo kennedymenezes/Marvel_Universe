@@ -1,5 +1,7 @@
 package com.kennedymenezes.marveluniverse.dashboard.data.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 data class MarvelResponse(
@@ -16,15 +18,17 @@ data class MarvelCharactersResponse(
     val heroesResult: List<CharactersResultResponse>
 )
 
+@Entity(tableName = "characters_table")
 data class CharactersResultResponse(
+    @PrimaryKey
     @SerializedName("id")
     val id: Int,
     @SerializedName("name")
     val name: String,
     @SerializedName("description")
     val description: String,
-    @SerializedName("thumbnail")
-    val heroImage: HeroImage
+//    @SerializedName("thumbnail")
+//    val heroImage: HeroImage
 )
 
 data class HeroImage(

@@ -15,12 +15,10 @@ class MarvelWebServiceImp : IMarvelWebService {
         .create(IMarvelWebService::class.java)
 
     override suspend fun getCharacters(ts: String, apiKey: String, hash: String): Response<MarvelResponse> {
-        val teste = webservice.getCharacters(
+        return webservice.getCharacters(
             ts = ts,
             hash = hash,
             apiKey = apiKey
         )
-        print(teste)
-        return teste
     }
 }

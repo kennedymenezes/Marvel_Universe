@@ -4,5 +4,5 @@ import com.kennedymenezes.marveluniverse.dashboard.domain.repository.MarvelChara
 import org.koin.dsl.module
 
 val repositoryModule = module {
-    factory { MarvelCharactersRepository(get()) }
+    factory { MarvelCharactersRepository(get(), get()) }
 }

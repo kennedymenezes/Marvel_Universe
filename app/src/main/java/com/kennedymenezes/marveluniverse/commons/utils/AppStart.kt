@@ -1,6 +1,7 @@
 package com.kennedymenezes.marveluniverse.commons.utils
 
 import android.app.Application
+import com.kennedymenezes.marveluniverse.commons.di.databaseModule
 import com.kennedymenezes.marveluniverse.commons.di.repositoryModule
 import com.kennedymenezes.marveluniverse.commons.di.viewModelModule
 import com.kennedymenezes.marveluniverse.commons.di.webServiceModule
@@ -13,7 +14,7 @@ class AppStart : Application() {
         super.onCreate()
         startKoin {
             androidContext(this@AppStart)
-            modules(webServiceModule, repositoryModule, viewModelModule)
+            modules(webServiceModule, repositoryModule, viewModelModule, databaseModule)
         }
     }
 }
