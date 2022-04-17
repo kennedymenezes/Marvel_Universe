@@ -27,8 +27,8 @@ data class CharactersResultResponse(
     val name: String,
     @SerializedName("description")
     val description: String,
-//    @SerializedName("thumbnail")
-//    val heroImage: HeroImage
+    @SerializedName("thumbnail")
+    val heroImage: HeroImage
 )
 
 data class HeroImage(

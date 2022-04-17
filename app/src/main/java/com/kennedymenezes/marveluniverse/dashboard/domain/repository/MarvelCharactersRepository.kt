@@ -34,6 +34,7 @@ class MarvelCharactersRepository(
 
     private fun checkResponse(response: Response<MarvelResponse>): MarvelResponse {
         if (response.body() != null) {
+            charactersDAO.setCharacters(response.body()!!.data.heroesResult)
             return response.body()!!
         } else {
             throw Exception("Api offline")
