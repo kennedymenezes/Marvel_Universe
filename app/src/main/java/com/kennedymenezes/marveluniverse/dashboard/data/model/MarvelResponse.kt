@@ -29,7 +29,11 @@ data class CharactersResultResponse(
     val description: String,
     @SerializedName("thumbnail")
     val heroImage: HeroImage
-)
+) {
+    fun getHeroImg(): String {
+        return "${heroImage.path}.${heroImage.extension}"
+    }
+}
 
 data class HeroImage(
     @SerializedName("path")
