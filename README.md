@@ -50,11 +50,6 @@
 
 
 ### Dependências 
-    
-    //LottieFiles
-    implementation "com.airbnb.android:lottie:3.4.0"
-
-   
 
     //Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9'
