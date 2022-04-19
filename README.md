@@ -84,7 +84,7 @@
 - [Coroutines](https://kotlinlang.org/docs/coroutines-overview.html)
 - [Glide](https://github.com/bumptech/glide)
 
-### Autores
+### Autor
 - Nome: Kennedy Menezes
 - email: kennedy.tec@gmail.com
 - [Linkedin](https://www.linkedin.com/in/jo%C3%A3o-kennedy-b716261aa/)
