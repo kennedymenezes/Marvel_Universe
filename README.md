@@ -48,9 +48,6 @@
     implementation 'com.github.bumptech.glide:glide:4.12.0'
     
 
-    // Circle Images view.
-    implementation 'de.hdodenhof:circleimageview:3.1.0'
-
 
     //retrofit
     implementation 'com.google.code.gson:gson:2.8.7'
@@ -73,9 +70,6 @@
     implementation 'com.github.bumptech.glide:glide:4.12.0'
     
 
-    // Circle Images view.
-    implementation 'de.hdodenhof:circleimageview:3.1.0'
-
 
     //retrofit
     implementation 'com.google.code.gson:gson:2.8.7'
@@ -89,7 +83,6 @@
 - [Retrofit](https://square.github.io/retrofit/) 
 - [Coroutines](https://kotlinlang.org/docs/coroutines-overview.html)
 - [Glide](https://github.com/bumptech/glide)
-- [Circle Image View](https://github.com/hdodenhof/CircleImageView)
 
 ### Autores
 - Nome: Kennedy Menezes
