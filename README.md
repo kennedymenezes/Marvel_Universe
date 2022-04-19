@@ -29,16 +29,6 @@
 
 
 ### Dependencies 
-    
-    //LottieFiles
-    implementation "com.airbnb.android:lottie:3.4.0"
-
-    //hilt
-    implementation "com.google.dagger:hilt-android:2.37"
-    implementation 'com.google.firebase:firebase-storage-ktx:20.0.0'
-    implementation 'com.google.firebase:firebase-database-ktx:20.0.2'
-    implementation 'com.google.firebase:firebase-messaging-ktx:22.0.0'
-    kapt "com.google.dagger:hilt-compiler:2.37"
 
     //Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9'
