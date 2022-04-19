@@ -2,6 +2,7 @@ package com.kennedymenezes.marveluniverse.dashboard.domain.repository
 
 import com.kennedymenezes.marveluniverse.commons.database.DAO.CharacterDAO
 import com.kennedymenezes.marveluniverse.dashboard.data.api.IMarvelWebService
+import com.kennedymenezes.marveluniverse.dashboard.data.model.CharactersResultResponse
 import com.kennedymenezes.marveluniverse.dashboard.data.model.MarvelResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -19,31 +20,37 @@ class MarvelCharactersRepository(
         private const val PRIVATE_KEY = "609478f76e078b9c27cbf845e13c139003d6130e"
     }
 
-    suspend fun getCharacters(): MarvelResponse {
-        val timeStamp = System.currentTimeMillis().toString()
-        return withContext(Dispatchers.Default) {
-            checkResponse(
-                webService.getCharacters(
-                    ts = "1",
-                    hash = "84b0922491335afc18aa36f8ec2d38f2",
-                    apiKey = PUBLIC_KEY
+    suspend fun getCharacters(offset: Int, connection: Boolean): List<CharactersResultResponse> {
+        if (connection) {
+            return withContext(Dispatchers.Default) {
+                checkResponse(
+                    webService.getCharacters(
+                        ts = "1",
+                        hash = "84b0922491335afc18aa36f8ec2d38f2",
+                        apiKey = PUBLIC_KEY,
+                        offset = offset
+                    )
                 )
-            )
-        }
-    }
-
-    private fun checkResponse(response: Response<MarvelResponse>): MarvelResponse {
-        if (response.body() != null) {
-            charactersDAO.setCharacters(response.body()!!.data.heroesResult)
-            return response.body()!!
+            }
         } else {
-            throw Exception("Api offline")
+            return withContext(Dispatchers.Default){
+                charactersDAO.getCharacters()
+            }
         }
     }
 
-    private fun generateHash(ts: String): String {
-        val input = "${ts}${PUBLIC_KEY}${PRIVATE_KEY}"
-        val md = MessageDigest.getInstance("MD5")
-        return BigInteger(1, md.digest(input.toByteArray())).toString(16).padStart(32, '0')
+private fun checkResponse(response: Response<MarvelResponse>): List<CharactersResultResponse> {
+    if (response.body() != null) {
+        charactersDAO.setCharacters(response.body()!!.data.heroesResult)
+        return response.body()!!.data.heroesResult
+    } else {
+        throw Exception("Api offline")
     }
+}
+
+private fun generateHash(ts: String): String {
+    val input = "${ts}${PUBLIC_KEY}${PRIVATE_KEY}"
+    val md = MessageDigest.getInstance("MD5")
+    return BigInteger(1, md.digest(input.toByteArray())).toString(16).padStart(32, '0')
+}
 }

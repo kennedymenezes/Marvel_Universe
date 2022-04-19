@@ -14,11 +14,12 @@ class MarvelWebServiceImp : IMarvelWebService {
         .addConverterFactory(GsonConverterFactory.create()).build()
         .create(IMarvelWebService::class.java)
 
-    override suspend fun getCharacters(ts: String, apiKey: String, hash: String): Response<MarvelResponse> {
+    override suspend fun getCharacters(ts: String, apiKey: String, hash: String, offset: Int): Response<MarvelResponse> {
         return webservice.getCharacters(
             ts = ts,
             hash = hash,
-            apiKey = apiKey
+            apiKey = apiKey,
+            offset = offset
         )
     }
 }
